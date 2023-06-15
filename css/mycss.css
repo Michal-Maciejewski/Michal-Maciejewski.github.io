@@ -1,0 +1,37 @@
+p, h2{
+	color: #0C243C;
+}
+
+body{
+	padding:0px;
+	margin: 0px;
+}
+
+.footer-bottom{
+	position: absolute;
+	bottom: 0;
+}
+
+
+.links {
+	overflow: hidden;
+	background-color: #333;
+  }
+  
+  .links div{
+	float: right;
+	margin: 0;
+	padding: 0;
+  }
+  
+.links div a {
+	display: inline-block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+  }
+
+ .links div a:hover {
+	background-color: #111;
+  }
