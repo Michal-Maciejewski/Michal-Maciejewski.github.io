@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAK Format</title>
+    <link href="https://fonts.cdnfonts.com/css/perfect-dos-vga-437" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+        <header>
+            <h1>PAK Format (The Learning Company)</h1>
+            <hr>
+        </header>
+        <section>
+            <p>Some descript</p>
+        </section>
+        <section>
+            <h2>Signature</h2>
+            <hr>
+        </section>
+        <section>
+            <h2>File Format</h2>
+            <hr>
+        </section>
+        <section>
+            <h2>Image Format</h2>
+            <hr>
+        </section>
+        <section>
+            <table class="file-format-table">
+                <tr>
+                    <th>Value</th>
+                    <th>Color Name</th>
+                    <th>Hexadecimal Value</th>
+                </tr>
+                <tr class="blue">
+                    <td>0</td>
+                    <td>Blue</td>
+                    <td>#0000AA</td>
+                </tr>
+                <tr class="light-blue">
+                    <td>1</td>
+                    <td>Light Blue</td>
+                    <td>#0000FF</td>
+                </tr>
+                <tr class="brown">
+                    <td>2</td>
+                    <td>Brown</td>
+                    <td>#AA5500</td>
+                </tr>
+                <tr class="light-red">
+                    <td>3</td>
+                    <td>Light Red</td>
+                    <td>#FF5555</td>
+                </tr>
+                <tr class="red">
+                    <td>4</td>
+                    <td>Red</td>
+                    <td>#AA0000</td>
+                </tr>
+                <tr class="magenta">
+                    <td>5</td>
+                    <td>Magenta</td>
+                    <td>#AA00AA</td>
+                </tr>
+                <tr class="light-magenta">
+                    <td>6</td>
+                    <td>Light Magenta</td>
+                    <td>#FF55FF</td>
+                </tr>
+                <tr class="cyan">
+                    <td>7</td>
+                    <td>Cyan</td>
+                    <td>#00AAAA</td>
+                </tr>
+                <tr class="green">
+                    <td>8</td>
+                    <td>Green</td>
+                    <td>#00AA00</td>
+                </tr>
+                <tr class="light-green">
+                    <td>9</td>
+                    <td>Light Green</td>
+                    <td>#55FF55</td>
+                </tr>
+                <tr class="light-cyan">
+                    <td>10</td>
+                    <td>Light Cyan</td>
+                    <td>#55FFFF</td>
+                </tr>
+                <tr class="yellow">
+                    <td>11</td>
+                    <td>Yellow</td>
+                    <td>#FFFF55</td>
+                </tr>
+                <tr class="white">
+                    <td>12</td>
+                    <td>White</td>
+                    <td>#FFFFFF</td>
+                </tr>
+                <tr class="light-gray">
+                    <td>13</td>
+                    <td>Light Gray</td>
+                    <td>#AAAAAA</td>
+                </tr>
+                <tr class="dark-gray">
+                    <td>14</td>
+                    <td>Dark Gray</td>
+                    <td>#555555</td>
+                </tr>
+                <tr class="black">
+                    <td>15</td>
+                    <td>Black</td>
+                    <td>#000000</td>
+                </tr>
+            </table>
+        </section>
+        
+        <p>
+            440 Where the algorithm breaks
+
+            00 means skip the second line get the second colors of byte 4 and make that the second line and push
+            everything down one line
+
+            01 similar to 02 and 03
+
+            02 similar to 03
+
+            03 means second line interpret as it is, then the rest repeater
+
+            04 top line on bottom and top and then gibberish first half
+
+            05 line 2-3 gibberish
+
+            06 top on the bottom then
+
+            and first few lines gibberish
+
+            07 something with second line and push everything down one line?
+
+            08 - just ignore first 2 bytes and then at some point stop the repeating colour bytes?
+
+            09 top few lines on bottom?
+
+            0A same as 0B?
+
+            0B something with the top half
+
+            0C first bit on bottom then cuts middle in half?
+
+            0D first line on top and bottom?
+
+            0E not too sure
+
+            0F means put first few lines on the bottom?</p>
+    </div>
+</body>
+
+</html>

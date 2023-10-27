@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users.dat</title>
+    <link href="https://fonts.cdnfonts.com/css/perfect-dos-vga-437" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+        <header>
+            <h1>Users</h1>
+            <hr>
+        </header>
+        <section>
+            <p>User data is 3242 bytes, it contains all data all players and saved game</p>
+        </section>
+        <section>
+            <h2>File Format</h2>
+            <p>Each player is 360 bytes in total, with a maximum of 9 players so (360 x 8 = 3240). The remaining 2 bytes
+                are just the end of the file 0x0000</p>
+            <table class="file-format-table">
+                <tr>
+                    <th>Position</th>
+                    <th>Hex</th>
+                    <th>DataType</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>0</td>
+                    <td>0x00</td>
+                    <td><a href="data-types.html">BYTE</a></td>
+                    <td>Start of data always 0x00</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>0x01</td>
+                    <td><a href="data-types.html">UINT16LE</a></td>
+                    <td>Not sure</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>0x03</td>
+                    <td><a href="data-types.html">ASCIIZ</a></td>
+                    <td>Player Name (9-char null-padded fixed length string)</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>0x0C</td>
+                    <td><a href="data-types.html">BYTE(boolean)</a></td>
+                    <td>Saved Game</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>0x0D</td>
+                    <td><a href="data-types.html">UINT16LE</a></td>
+                    <td>Player Score</td>
+                </tr>
+                <tr>
+                    <td>105</td>
+                    <td>0x69</td>
+                    <td><a href="data-types.html">UINT16LE[9]</a></td>
+                    <td>The quiz that will be displayed by the elf</td>
+                </tr>
+                <tr>
+                    <td>123</td>
+                    <td>0x7B</td>
+                    <td><a href="data-types.html">BYTE[9]</a></td>
+                    <td>Each elf in the game</td>
+                </tr>
+                <tr>
+                    <td>132</td>
+                    <td>0x82</td>
+                    <td><a href="data-types.html">BYTE[9]</a></td>
+                    <td>Words for the current level</td>
+                </tr>
+                <tr>
+                    <td>141</td>
+                    <td>0x89</td>
+                    <td><a href="data-types.html">BYTE[48]</a></td>
+                    <td>Treasures in Collection</td>
+                </tr>
+                <tr>
+                    <td>219</td>
+                    <td>0xDB</td>
+                    <td><a href="data-types.html">BYTE[]</a></td>
+                    <td>Level Chunks level 1</td>
+                </tr>
+                <tr>
+                    <td>238</td>
+                    <td>0xEE</td>
+                    <td><a href="data-types.html">BYTE</a></td>
+                    <td>Secret Cave Chunks</td>
+                </tr>
+                <tr>
+                    <td>239</td>
+                    <td>0xEF</td>
+                    <td><a href="data-types.html">BYTE[]</a></td>
+                    <td>Level Chunks level 2 - Not sure exact position yet</td>
+                </tr>
+                <tr>
+                    <td>239</td>
+                    <td>0xEF</td>
+                    <td><a href="data-types.html">BYTE[]</a></td>
+                    <td>Level Chunks level 3 - Not sure exact position yet</td>
+                </tr>
+                <tr>
+                    <td>244</td>
+                    <td>0xF4</td>
+                    <td><a href="data-types.html">UINT16LE</a></td>
+                    <td>Net rock</td>
+                </tr>
+                <tr>
+                    <td>260</td>
+                    <td>0x104</td>
+                    <td><a href="data-types.html">UINT16LE</a></td>
+                    <td>Level 2 Treasure in each chunk - Starts just right of the ladder ends at 273 (0x111) Not sure 0x112 and 0x113 is? Always changes back to 86</td>
+                </tr>
+                <tr>
+                    <td>276</td>
+                    <td>0x114</td>
+                    <td><a href="data-types.html">BYTE[20]</a></td>
+                    <td>Level 1 Treasure in each chunk</td>
+                </tr>
+                <tr>
+                    <td>307</td>
+                    <td>0x133</td>
+                    <td><a href="data-types.html">BYTE[3]</a></td>
+                    <td>Current Game Treasure Amount Collected</td>
+                </tr>
+                <tr>
+                    <td>310</td>
+                    <td>0x136</td>
+                    <td><a href="data-types.html">BYTE[6]</a></td>
+                    <td>Treasure Duplication</td>
+                </tr>
+                <tr>
+                    <td>327</td>
+                    <td>0x147</td>
+                    <td><a href="data-types.html">UINT16LE[2]</a></td>
+                    <td>Coin and Net Amount</td>
+                </tr>
+                <tr>
+                    <td>336</td>
+                    <td>0x14F</td>
+                    <td><a href="data-types.html">UINT16LE[11 or 12]</a></td>
+                    <td>Player Position and Room</td>
+                </tr>
+                <tr>
+                    <td>335</td>
+                    <td>0x14F</td>
+                    <td><a href="data-types.html">BYTE</a></td>
+                    <td>Net spawned</td>
+                </tr>
+                <tr>
+                    <td>347</td>
+                    <td>0x15B</td>
+                    <td><a href="data-types.html">BYTE</a></td>
+                    <td>Net Coin Amount</td>
+                </tr>
+                <tr>
+                    <td>359</td>
+                    <td>0x167</td>
+                    <td><a href="data-types.html">BYTE</a></td>
+                    <td>Currently Selected Treasure in clubhouse</td>
+                </tr>
+            </table>
+
+        </section>
+        <section>
+            <h2>File extra information</h2>
+            <hr>
+            <h3>Player Name</h3>
+            <p>Player name is a string with null terminator at the end, this string can only be maximum 8 characters so
+                9 BYTES in total if including null terminator</p>
+            <h3>Player Score</h3>
+            <p>Player score has a rank system based on it's value</p>
+            <table class="file-format-table">
+                <tr>
+                    <th>Score Range</th>
+                    <th>Rank</th>
+                </tr>
+                <tr>
+                    <td>0 - 4</td>
+                    <td>Trainee</td>
+                </tr>
+                <tr>
+                    <td>5 - 24</td>
+                    <td>One Star</td>
+                </tr>
+                <tr>
+                    <td>25 - 69</td>
+                    <td>Two Star</td>
+                </tr>
+                <tr>
+                    <td>70 - 114</td>
+                    <td>Three Star</td>
+                </tr>
+                <tr>
+                    <td>115 - 169</td>
+                    <td>Four Star</td>
+                </tr>
+                <tr>
+                    <td>170 - 229</td>
+                    <td>Five Star</td>
+                </tr>
+                <tr>
+                    <td>230 - 299</td>
+                    <td>Six Star</td>
+                </tr>
+                <tr>
+                    <td>300 and above</td>
+                    <td>Champion</td>
+                </tr>
+            </table>
+            <h3>Elf Quizzes</h3>
+            <p>Elf quizzes are based of it's value indexed from 0 to whaterver number. First byte will be the index
+                number from the list of quizzes from <a href="pusz.html"><b>ALL_PUZS</b></a> file and
+                the next byte will be 0x00 if it hasn't been solved otherwise it will be 0x80</p>
+            <h3>Elf Status/Position</h3>
+            <p>This is the elf status and position, links up with the actual Elf quizzes, so if one position changes
+                here the corresponding quiz does as well</p>
+            <p>Elf also has a code for each status of taken options</p>
+            <table class="file-format-table">
+                <tr>
+                    <th>Number</th>
+                    <th>Interpretation</th>
+                </tr>
+                <tr>
+                    <td>07</td>
+                    <td>Nothing has been chosen</td>
+                </tr>
+                <tr>
+                    <td>06</td>
+                    <td>Top one has been chosen</td>
+                </tr>
+                <tr>
+                    <td>05</td>
+                    <td>One choice has been made (Middle done)</td>
+                </tr>
+                <tr>
+                    <td>03</td>
+                    <td>Only 1 choice made (Bottom done)</td>
+                </tr>
+                <tr>
+                    <td>02</td>
+                    <td>2 choices made (Middle and Bottom - Maybe means nothing)</td>
+                </tr>
+                <tr>
+                    <td>01</td>
+                    <td>2 choices have been made, so everything except answer is grey</td>
+                </tr>
+                <tr>
+                    <td>00</td>
+                    <td>All choices have been made</td>
+                </tr>
+            </table>
+            <h3>Level Code Words</h3>
+            <p>There are 9 code words and they are stored via indexed from the <a href="sst.html"><b>SST.EXE</b></a>
+                file starts at position 100416
+                (hex 0x18840) and increments by one seperate by a null terminators until position 100734 (hex 0x1897E).
+                It first stored in it's index value + 123 and when the word is found you minus 123 again to get it's
+                actual index.</p>
+            <h3>Treasure Collection</h3>
+            <p>This is the treasure collection, it is stored in values that start from 0x06 that increment by 2 until
+                you reach 0x64. There are 48 treasures to collect in total and they all start at default value 0x80.
+                Ends with a 0x00</p>
+            <div style="display: flex;column-gap: 1rem;">
+                <table class="file-format-table">
+                    <thead>
+                        <tr>
+                            <th>Hex Value</th>
+                            <th>Item</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0x06</td>
+                            <td>Hankerchief</td>
+                        </tr>
+                        <tr>
+                            <td>0x08</td>
+                            <td>SailBoat</td>
+                        </tr>
+                        <tr>
+                            <td>0x0A</td>
+                            <td>IceCream</td>
+                        </tr>
+                        <tr>
+                            <td>0x0C</td>
+                            <td>Map</td>
+                        </tr>
+                        <tr>
+                            <td>0x0E</td>
+                            <td>Watering Can</td>
+                        </tr>
+                        <tr>
+                            <td>0x10</td>
+                            <td>Xylaphone</td>
+                        </tr>
+                        <tr>
+                            <td>0x12</td>
+                            <td>Flute</td>
+                        </tr>
+                        <tr>
+                            <td>0x14</td>
+                            <td>Telescope</td>
+                        </tr>
+                        <tr>
+                            <td>0x16</td>
+                            <td>FruitBottle</td>
+                        </tr>
+                        <tr>
+                            <td>0x18</td>
+                            <td>Pie</td>
+                        </tr>
+                        <tr>
+                            <td>0x1A</td>
+                            <td>Clam</td>
+                        </tr>
+                        <tr>
+                            <td>0x1C</td>
+                            <td>HoneyVase</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <table class="file-format-table">
+                    <thead>
+                        <tr>
+                            <th>Hex Value</th>
+                            <th>Item</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0x1E</td>
+                            <td>Balloon</td>
+                        </tr>
+                        <tr>
+                            <td>0x20</td>
+                            <td>Vase</td>
+                        </tr>
+                        <tr>
+                            <td>0x22</td>
+                            <td>TeddyBear</td>
+                        </tr>
+                        <tr>
+                            <td>0x24</td>
+                            <td>CandyCane</td>
+                        </tr>
+                        <tr>
+                            <td>0x26</td>
+                            <td>AwardFirstPlace</td>
+                        </tr>
+                        <tr>
+                            <td>0x28</td>
+                            <td>FourLeafClover</td>
+                        </tr>
+                        <tr>
+                            <td>0x2A</td>
+                            <td>Mirror</td>
+                        </tr>
+                        <tr>
+                            <td>0x2C</td>
+                            <td>FlowerPot</td>
+                        </tr>
+                        <tr>
+                            <td>0x2E</td>
+                            <td>Cake</td>
+                        </tr>
+                        <tr>
+                            <td>0x30</td>
+                            <td>IceSkates</td>
+                        </tr>
+                        <tr>
+                            <td>0x32</td>
+                            <td>Drum</td>
+                        </tr>
+                        <tr>
+                            <td>0x34</td>
+                            <td>Shoes</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                <table class="file-format-table">
+                    <thead>
+                        <tr>
+                            <th>Hex Value</th>
+                            <th>Item</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0x36</td>
+                            <td>Windmill</td>
+                        </tr>
+                        <tr>
+                            <td>0x38</td>
+                            <td>JackInTheBox</td>
+                        </tr>
+                        <tr>
+                            <td>0x3A</td>
+                            <td>Latern</td>
+                        </tr>
+                        <tr>
+                            <td>0x3C</td>
+                            <td>High Heels</td>
+                        </tr>
+                        <tr>
+                            <td>0x3E</td>
+                            <td>Necklace</td>
+                        </tr>
+                        <tr>
+                            <td>0x40</td>
+                            <td>Skate Board</td>
+                        </tr>
+                        <tr>
+                            <td>0x42</td>
+                            <td>Candle</td>
+                        </tr>
+                        <tr>
+                            <td>0x44</td>
+                            <td>Top Thing</td>
+                        </tr>
+                        <tr>
+                            <td>0x46</td>
+                            <td>Lamp</td>
+                        </tr>
+                        <tr>
+                            <td>0x48</td>
+                            <td>FishBowel</td>
+                        </tr>
+                        <tr>
+                            <td>0x4A</td>
+                            <td>Train</td>
+                        </tr>
+                        <tr>
+                            <td>0x4C</td>
+                            <td>Carraige</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="file-format-table">
+                    <thead>
+                        <tr>
+                            <th>Hex Value</th>
+                            <th>Item</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0x4E</td>
+                            <td>Cabuse</td>
+                        </tr>
+                        <tr>
+                            <td>0x50</td>
+                            <td>Rocket</td>
+                        </tr>
+                        <tr>
+                            <td>0x52</td>
+                            <td>Dog</td>
+                        </tr>
+                        <tr>
+                            <td>0x54</td>
+                            <td>Cat</td>
+                        </tr>
+                        <tr>
+                            <td>0x56</td>
+                            <td>Ring</td>
+                        </tr>
+                        <tr>
+                            <td>0x58</td>
+                            <td>Pig</td>
+                        </tr>
+                        <tr>
+                            <td>0x5A</td>
+                            <td>GenieLamp</td>
+                        </tr>
+                        <tr>
+                            <td>0x5C</td>
+                            <td>Pong Board</td>
+                        </tr>
+                        <tr>
+                            <td>0x5E</td>
+                            <td>Plane</td>
+                        </tr>
+                        <tr>
+                            <td>0x60</td>
+                            <td>Funky Glasses</td>
+                        </tr>
+                        <tr>
+                            <td>0x62</td>
+                            <td>Twirly Hat</td>
+                        </tr>
+                        <tr>
+                            <td>0x64</td>
+                            <td>Swan</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="file-format-table">
+                    <thead>
+                        <tr>
+                            <th>Hex Value</th>
+                            <th>Key</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0x66</td>
+                            <td>Yellow Key</td>
+                        </tr>
+                        <tr>
+                            <td>0x68</td>
+                            <td>Green Key</td>
+                        </tr>
+                        <tr>
+                            <td>0x6A</td>
+                            <td>Purple Key</td>
+                        </tr>
+                        <tr>
+                            <td>0x6C</td>
+                            <td>Yellow Key Outline</td>
+                        </tr>
+                        <tr>
+                            <td>0x6E</td>
+                            <td>Green Key Outline</td>
+                        </tr>
+                        <tr>
+                            <td>0x70</td>
+                            <td>Purple Key Outline</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h3>Level Chunks</h3>
+            <p>Every room is loaded in chunks, now each chunk is exaclty 128x128 pixels</p>
+            <h4>Level 1 Chunks</h4>
+            <p>Level 1 Chunks have 19 in total, it starts 10 chunks from the clubhouse entrance, or 11 if you include the clubhouse chunk</p>
+            <h4>Secret Cave Chunk</h4>
+            <p>Just one chunk in this cave, so when it knows if you have taken the coins or not. 0x4B means there are
+                coins in this chunk, 0x49 means there are no coins in this chunk</p>
+            <h4>Level 2 Chunks</h4>
+            <p>Level 2 Chunks have x in total etc etc</p>
+            <h4>Level 3 Chunks</h4>
+            <p>Level 3 Chunks have x in total etc etc</p>
+            <h3>Teasures Collected Amount</h3>
+            <p>So this is just one byte for each level saying how many treasures you have collected</p>
+            <table class="file-format-table">
+                <tr>
+                    <th>Hexadecimal</th>
+                    <th>Number</th>
+                </tr>
+                <tr>
+                    <td>0x00</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td>0x01</td>
+                    <td>One</td>
+                </tr>
+                <tr>
+                    <td>0x03</td>
+                    <td>Two</td>
+                </tr>
+                <tr>
+                    <td>0x07</td>
+                    <td>Three</td>
+                </tr>
+                <tr>
+                    <td>0x0F</td>
+                    <td>Four</td>
+                </tr>
+                <tr>
+                    <td>0x1F</td>
+                    <td>All Treasures</td>
+                </tr>
+            </table>
+            <h3>Net Spawner</h3>
+            <p>So for the next spawner to be able to work, first you have the value 0x4646, next you have the net
+                spawned which is 0x00 or 0x04 and lastly you have the coins till it opens amount which always starts at
+                0x04. Now when the coin amount drops to 0 the net spawner value changes to 0x4747 and the net spawned
+                becomes 0x00.
+                Now they all need to change to these values so whenever you load it loads as it is. The only one that is
+                independant while it's not open is the coin amount.</p>
+            <h3>Treasure Duplication</h3>
+            <p>This uses bitwise operator to check which items are duplicated so binary value of 10001101 means the
+                first, third, fourth and eigth treasure are duplicated. Increments for each byte by 8 until you get 48
+                bits in total from right to left each byte.</p>
+            <h3>Player Net and Coin Amount</h3>
+            <p>First UINT16LE is the net amount then the next is the coin amount</p>
+            <h3>Player Room and Position</h3>
+            <p>Saves the player's last room, position and what chunks loaded on it's left and right?</p>
+            <h3>Currently Selected Treasure</h3>
+            <p>Basically how it works is the current treasure is replaced with 0x80 so when you change the index of which
+                character selected, find the first 0x80 and go back or forth in the index and replace that treasure with
+                0x80</p>
+        </section>
+    </div>
+</body>
+
+</html>
