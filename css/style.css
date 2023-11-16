@@ -1,0 +1,211 @@
+:root {
+    --color-0: #0000AA;
+    /* Blue */
+    --color-1: #0000FF;
+    /* Light Blue */
+    --color-2: #AA5500;
+    /* Brown */
+    --color-3: #FF5555;
+    /* Light Red */
+    --color-4: #AA0000;
+    /* Red */
+    --color-5: #AA00AA;
+    /* Magenta */
+    --color-6: #FF55FF;
+    /* Light Magenta */
+    --color-7: #00AAAA;
+    /* Cyan */
+    --color-8: #00AA00;
+    /* Green */
+    --color-9: #55FF55;
+    /* Light Green */
+    --color-10: #55FFFF;
+    /* Light Cyan */
+    --color-11: #FFFF55;
+    /* Yellow */
+    --color-12: #FFFFFF;
+    /* White */
+    --color-13: #AAAAAA;
+    /* Light Gray */
+    --color-14: #555555;
+    /* Dark Gray */
+    --color-15: #000000;
+    /* Black */
+}
+
+html {
+    font-family: sans-serif;
+    color: var(--color-15);
+    background-color: var(--color-12);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+}
+
+.file-format-table {
+    border-collapse: collapse;
+    background-color: var(--color-13);
+    color: var(--color-15);
+
+    & th,
+    tr,
+    td {
+        padding: 5px;
+        border: 1px var(--color-15) solid;
+    }
+
+    & th {
+        background-color: var(--color-14);
+        color: var(--color-12);
+    }
+}
+
+.container {
+    width: 80%;
+    margin-inline: auto;
+}
+
+
+
+.blue {
+    background-color: var(--color-0);
+    color: var(--color-12);
+}
+
+.light-blue {
+    background-color: var(--color-1);
+    color: var(--color-12);
+}
+
+.brown {
+    background-color: var(--color-2);
+    color: var(--color-12);
+}
+
+.light-red {
+    background-color: var(--color-3);
+    color: var(--color-15);
+}
+
+.red {
+    background-color: var(--color-4);
+    color: var(--color-12);
+}
+
+.magenta {
+    background-color: var(--color-5);
+    color: var(--color-12);
+}
+
+.light-magenta {
+    background-color: var(--color-6);
+    color: var(--color-12);
+}
+
+.cyan {
+    background-color: var(--color-7);
+    color: var(--color-12);
+}
+
+.green {
+    background-color: var(--color-8);
+    color: var(--color-12);
+}
+
+.light-green {
+    background-color: var(--color-9);
+    color: var(--color-15);
+}
+
+.light-cyan {
+    background-color: var(--color-10);
+    color: var(--color-15);
+}
+
+.yellow {
+    background-color: var(--color-11);
+    color: var(--color-15);
+}
+
+.white {
+    background-color: var(--color-12);
+    color: var(--color-15);
+}
+
+.light-gray {
+    background-color: var(--color-13);
+    color: var(--color-10);
+}
+
+.dark-gray {
+    background-color: var(--color-14);
+    color: var(--color-12);
+}
+
+.black {
+    background-color: var(--color-15);
+    color: var(--color-12);
+}
+
+a:visited {
+    color: var(--color-5);
+}
+
+a {
+    color: var(--color-0);
+}
+
+a:hover {
+    color: var(--color-6);
+}
+
+.chunk {
+    background-color: var(--color-14);
+    border-collapse: collapse;
+    color: var(--color-12);
+    & td {
+        
+        text-align: center;
+        height: 50px;
+        width: 50px;
+        border: 2px var(--color-15) solid;
+        align-items: center;
+    }
+}
+
+.entry {
+    background-color: var(--color-3);
+}
+
+.origin {
+    background-color: var(--color-11);
+    color: var(--color-15);
+}
+
+.absolute{
+    background-color: var(--color-6);
+}
+
+.image-box{
+    float: right;
+    border: 2px var(--color-15) solid;
+    background-color: var(--color-13);
+    border-radius: 25px;
+    width: 400px;
+    height: 400px;
+    & img{
+        margin: 10px;
+        border-radius: 25px;
+        width: 370px;
+        height: 370px;
+    }
+}
