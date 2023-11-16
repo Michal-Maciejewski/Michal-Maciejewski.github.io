@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users.dat</title>
-    <link href="https://fonts.cdnfonts.com/css/perfect-dos-vga-437" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -19,15 +18,17 @@
             <hr>
         </header>
         <section>
-            <p>User data is 3242 bytes, it contains all data all players and saved game</p>
+            <p>This file is 3,242 bytes in total. It functions as a repository for player-specific data, encompassing
+                individual player profiles and their respective saved game level.</p>
         </section>
         <section>
             <h2>File Format</h2>
-            <p>Each player is 360 bytes in total, with a maximum of 9 players so (360 x 8 = 3240). The remaining 2 bytes
+            <p>Each player is saved in 360 bytes sections, with a maximum of 9 players. 360 x 8 = 3240 and the remaining
+                2 bytes
                 are just the end of the file 0x0000</p>
             <table class="file-format-table">
                 <tr>
-                    <th>Position</th>
+                    <th>Decimal</th>
                     <th>Hex</th>
                     <th>DataType</th>
                     <th>Description</th>
@@ -42,7 +43,7 @@
                     <td>1</td>
                     <td>0x01</td>
                     <td><a href="data-types.html">UINT16LE</a></td>
-                    <td>Not sure</td>
+                    <td>Unknown</td>
                 </tr>
                 <tr>
                     <td>3</td>
@@ -87,9 +88,21 @@
                     <td>Treasures in Collection</td>
                 </tr>
                 <tr>
+                    <td>190</td>
+                    <td>0xBE</td>
+                    <td><a href="data-types.html">BYTE[10]</a></td>
+                    <td>Level Chunks level 3</td>
+                </tr>
+                <tr>
+                    <td>203</td>
+                    <td>0xCB</td>
+                    <td><a href="data-types.html">BYTE[14]</a></td>
+                    <td>Level Chunks level 2</td>
+                </tr>
+                <tr>
                     <td>219</td>
                     <td>0xDB</td>
-                    <td><a href="data-types.html">BYTE[]</a></td>
+                    <td><a href="data-types.html">BYTE[19]</a></td>
                     <td>Level Chunks level 1</td>
                 </tr>
                 <tr>
@@ -101,14 +114,32 @@
                 <tr>
                     <td>239</td>
                     <td>0xEF</td>
-                    <td><a href="data-types.html">BYTE[]</a></td>
-                    <td>Level Chunks level 2 - Not sure exact position yet</td>
+                    <td><a href="data-types.html">BYTE</a></td>
+                    <td>This is the end level gate, 26 for closed gate on 3C for open</td>
                 </tr>
                 <tr>
-                    <td>239</td>
-                    <td>0xEF</td>
-                    <td><a href="data-types.html">BYTE[]</a></td>
-                    <td>Level Chunks level 3 - Not sure exact position yet</td>
+                    <td>240</td>
+                    <td>0xF0</td>
+                    <td><a href="data-types.html">BYTE</a></td>
+                    <td>Level 3 bridge chunk</td>
+                </tr>
+                <tr>
+                    <td>241</td>
+                    <td>0xF1</td>
+                    <td><a href="data-types.html">BYTE</a></td>
+                    <td>This is the end level gate, 26 for closed gate on 3C for open</td>
+                </tr>
+                <tr>
+                    <td>242</td>
+                    <td>0xF2</td>
+                    <td><a href="data-types.html">BYTE</a></td>
+                    <td>Level 2 exit 38 default 35 done</td>
+                </tr>
+                <tr>
+                    <td>243</td>
+                    <td>0xF3</td>
+                    <td><a href="data-types.html">BYTE</a></td>
+                    <td>Level 2 bridge chunk</td>
                 </tr>
                 <tr>
                     <td>244</td>
@@ -117,10 +148,23 @@
                     <td>Net rock</td>
                 </tr>
                 <tr>
+                    <td>246</td>
+                    <td>0xF6</td>
+                    <td><a href="data-types.html">BYTE</a></td>
+                    <td>Changes the treehouse chunk to with key, 40 closed and 4C with key</td>
+                </tr>
+                <tr>
+                    <td>247</td>
+                    <td>0xF7</td>
+                    <td><a href="data-types.html">BYTE[11]</a></td>
+                    <td>Level 3 Treasure in each chunk</td>
+                </tr>
+                <tr>
                     <td>260</td>
                     <td>0x104</td>
-                    <td><a href="data-types.html">UINT16LE</a></td>
-                    <td>Level 2 Treasure in each chunk - Starts just right of the ladder ends at 273 (0x111) Not sure 0x112 and 0x113 is? Always changes back to 86</td>
+                    <td><a href="data-types.html">BYTE[13]</a></td>
+                    <td>Level 2 Treasure in each chunk - Starts just right of the ladder ends at 273 (0x111) Not sure
+                        0x112 and 0x113 is? Always changes back to 86</td>
                 </tr>
                 <tr>
                     <td>276</td>
@@ -141,16 +185,22 @@
                     <td>Treasure Duplication</td>
                 </tr>
                 <tr>
+                    <td>325</td>
+                    <td>0x145</td>
+                    <td><a href="data-types.html">BYTE</a></td>
+                    <td>Current tileset to use</td>
+                </tr>
+                <tr>
                     <td>327</td>
                     <td>0x147</td>
                     <td><a href="data-types.html">UINT16LE[2]</a></td>
-                    <td>Coin and Net Amount</td>
+                    <td>Coin and Net Amount for players saved game</td>
                 </tr>
                 <tr>
-                    <td>336</td>
-                    <td>0x14F</td>
-                    <td><a href="data-types.html">UINT16LE[11 or 12]</a></td>
-                    <td>Player Position and Room</td>
+                    <td>335</td>
+                    <td>0x14D</td>
+                    <td><a href="data-types.html">BYTE</a></td>
+                    <td>Current level key if it's collected or not</td>
                 </tr>
                 <tr>
                     <td>335</td>
@@ -159,15 +209,39 @@
                     <td>Net spawned</td>
                 </tr>
                 <tr>
+                    <td>338</td>
+                    <td>0x151</td>
+                    <td><a href="data-types.html">UINT16LE[8]</a></td>
+                    <td>Player and Camera Position</td>
+                </tr>
+                <tr>
                     <td>347</td>
                     <td>0x15B</td>
                     <td><a href="data-types.html">BYTE</a></td>
-                    <td>Net Coin Amount</td>
+                    <td>Coins to open net boulder</td>
+                </tr>
+                <tr>
+                    <td>348</td>
+                    <td>0x15C</td>
+                    <td><a href="data-types.html">UINT16LE[2]</a></td>
+                    <td>Net and Coin Amount for player</td>
+                </tr>
+                <tr>
+                    <td>353</td>
+                    <td>0x161</td>
+                    <td><a href="data-types.html">BYTE(boolean)</a></td>
+                    <td>Music on and off</td>
+                </tr>
+                <tr>
+                    <td>355</td>
+                    <td>0x163</td>
+                    <td><a href="data-types.html">BYTE(boolean)</a></td>
+                    <td>Sound on and off</td>
                 </tr>
                 <tr>
                     <td>359</td>
                     <td>0x167</td>
-                    <td><a href="data-types.html">BYTE</a></td>
+                    <td><a href="data-types.html">UINT16LE</a></td>
                     <td>Currently Selected Treasure in clubhouse</td>
                 </tr>
             </table>
@@ -544,19 +618,105 @@
                 </table>
             </div>
             <h3>Level Chunks</h3>
+            <h4>Chunk Legend</h4>
+            <ul>
+                <li>CH - Clubhouse</li>
+                <li>C - Editable Chunk</li>
+                <li>CH - Clubhouse</li>
+                <li>CH - Clubhouse</li>
+
+            </ul>
+            <!--<div class="image-box" style="float: right; width: 400px; height: 400px;">
+                <img src="images/treasure-mountain-entire-level.png">
+            </div>-->
             <p>Every room is loaded in chunks, now each chunk is exaclty 128x128 pixels</p>
             <h4>Level 1 Chunks</h4>
-            <p>Level 1 Chunks have 19 in total, it starts 10 chunks from the clubhouse entrance, or 11 if you include the clubhouse chunk</p>
+            <p>Level 1 Chunks have 19 in total, it starts 10 chunks from the clubhouse entrance, or 11 if you include
+                the clubhouse chunk</p>
+            <table class="chunk">
+                <tr>
+                    <td>C</td>
+                    <td>C</td>
+                    <td>C</td>
+                    <td class="entry">CH</td>
+                    <td>C</td>
+                    <td>C</td>
+                    <td>C</td>
+                    <td class="entry">CE</td>
+                    <td>C</td>
+                    <td>C</td>
+                    <td>C</td>
+                    <td>C</td>
+                    <td>C</td>
+                    <td class="origin">CO</td>
+                    <td>C</td>
+                    <td>C</td>
+                    <td class="absolute">PC</td>
+                    <td class="absolute">PC</td>
+                    <td>C</td>
+                    <td>C</td>
+                    <td class="absolute">NC</td>
+                    <td class="entry">CE</td>
+                    <td>C</td>
+                    <td>C</td>
+                    <td>C</td>
+                    <td class="entry">TH</td>
+                </tr>
+            </table>
             <h4>Secret Cave Chunk</h4>
             <p>Just one chunk in this cave, so when it knows if you have taken the coins or not. 0x4B means there are
                 coins in this chunk, 0x49 means there are no coins in this chunk</p>
             <h4>Level 2 Chunks</h4>
             <p>Level 2 Chunks have x in total etc etc</p>
+            <table class="chunk">
+                <tr>
+                    <td>C</td>
+                    <td class="entry">TH</td>
+                    <td>C</td>
+                    <td>C</td>
+                    <td>C</td>
+                    <td class="entry">CE</td>
+                    <td>C</td>
+                    <td class="absolute">PC</td>
+                    <td>C</td>
+                    <td>C</td>
+                    <td class="absolute">PC</td>
+                    <td>C</td>
+                    <td>C</td>
+                    <td>C</td>
+                    <td class="entry">CE</td>
+                    <td class="absolute">NC</td>
+                    <td>C</td>
+                    <td>C</td>
+                    <td class="entry">TH</td>
+                    <td class="origin">CO</td>
+                    <td>C</td>
+                </tr>
+            </table>
             <h4>Level 3 Chunks</h4>
             <p>Level 3 Chunks have x in total etc etc</p>
+            <table class="chunk">
+                <tr>
+                    <td>C</td>
+                    <td class="entry">TH</td>
+                    <td>C</td>
+                    <td>C</td>
+                    <td>C</td>
+                    <td>C</td>
+                    <td>C</td>
+                    <td class="absolute">PC</td>
+                    <td>C</td>
+                    <td class="origin">CO</td>
+                    <td>C</td>
+                    <td class="entry">TH</td>
+                    <td>C</td>
+                    <td>C</td>
+                    <td class="entry">CE</td>
+                </tr>
+            </table>
             <h3>Teasures Collected Amount</h3>
             <p>So this is just one byte for each level saying how many treasures you have collected</p>
-            <table class="file-format-table">
+            <table class="file-format-table" style="border-collapse: collapse;">
                 <tr>
                     <th>Hexadecimal</th>
                     <th>Number</th>
@@ -587,6 +747,11 @@
                 </tr>
             </table>
             <h3>Net Spawner</h3>
+            Net Rock is 0x4747 when not opened 0x4646 when opened
+            <br>
+            Net Not Spawned is 0x04 and 0x00 when spawned
+            <br>
+            Coin Amount is the amount of coins needed - With the sprite it is index based off the sprite sheet, 0 is empty but 1-6 are numbers, anything after that will be any sprite in the spritesheet.
             <p>So for the next spawner to be able to work, first you have the value 0x4646, next you have the net
                 spawned which is 0x00 or 0x04 and lastly you have the coins till it opens amount which always starts at
                 0x04. Now when the coin amount drops to 0 the net spawner value changes to 0x4747 and the net spawned
@@ -601,10 +766,46 @@
             <p>First UINT16LE is the net amount then the next is the coin amount</p>
             <h3>Player Room and Position</h3>
             <p>Saves the player's last room, position and what chunks loaded on it's left and right?</p>
+            <h3>Key</h3>
+            <p>So when you change level it changes to if you have a key or not. This is dependant on if the key actually
+                exists in the treasures or not. If it doesn't exist when you load it counts as you having the key.
+                Current levels Keys</p>
+            <table class="file-format-table">
+                <tr>
+                    <th>Level</th>
+                    <th>Code For key</th>
+                    <th>Code No key</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>0x02</td>
+                    <td>0x08</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>0x02</td>
+                    <td>0x04</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>0x05</td>
+                    <td>0x08</td>
+                </tr>
+            </table>
+            <h3>Player Position</h3>
+            <p>I believe the whole level is in the one room and it's seperated everywhere.</p>
+            <p>So player position works in the fact every pair of bytes is for the position in the room. There are 7
+                chunks both with and height. They are 256 units each</p>
+            <p>First two bytes are player X Offest and the current Chunk</p>
+            <p>Second two bytes are player Y Offest and the current Chunk</p>
+            <p>Third two bytes are camera X Offest and the current Chunk</p>
+            <p>Fourth two bytes are camera Y Offest and the current Chunk</p>
             <h3>Currently Selected Treasure</h3>
-            <p>Basically how it works is the current treasure is replaced with 0x80 so when you change the index of which
+            <p>Basically how it works is the current treasure is replaced with 0x80 so when you change the index of
+                which
                 character selected, find the first 0x80 and go back or forth in the index and replace that treasure with
-                0x80</p>
+                0x80
+                FFFF if no treauses collected yet</p>
         </section>
     </div>
 </body>
